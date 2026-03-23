@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fbergenholtz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="stars"></canvas>
+
+    <div class="content" id="hero">
+        <h1 class="title">Frederik Bergenholtz</h1>
+        <p class="subtitle">Student</p>
+        <nav class="links">
+            <a href="#" data-panel="about">about</a>
+            <a href="#" data-panel="projects">projects</a>
+            <a href="#" data-panel="contact">contact</a>
+        </nav>
+    </div>
+
+    <!-- About panel -->
+    <div class="panel" id="panel-about">
+        <button class="back-btn">&larr; back</button>
+        <h2>About</h2>
+        <p>Hi, I'm Frederik — a student passionate about software, design, and building things on the web.</p>
+    </div>
+
+    <!-- Projects panel -->
+    <div class="panel" id="panel-projects">
+        <button class="back-btn">&larr; back</button>
+        <h2>Projects</h2>
+        <ul class="project-list">
+            <li>
+                <span class="project-name">Personal Site</span>
+                <span class="project-desc">This very site — dark, starry, minimal.</span>
+            </li>
+            <li>
+                <span class="project-name">Project Two</span>
+                <span class="project-desc">Coming soon.</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contact panel -->
+    <div class="panel" id="panel-contact">
+        <button class="back-btn">&larr; back</button>
+        <h2>Contact</h2>
+        <p>Reach me at <a href="mailto:hello@example.com">hello@example.com</a></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
