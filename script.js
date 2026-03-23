@@ -2,7 +2,6 @@ const canvas = document.getElementById('stars');
 const ctx = canvas.getContext('2d');
 
 const STAR_COUNT = 300;
-const SHOOTING_STAR_INTERVAL = 3500; // ms between shooting stars
 
 let stars = [];
 let width, height;
@@ -41,51 +40,9 @@ function drawStars() {
     });
 }
 
-// Shooting stars
-let shootingStars = [];
-
-function spawnShootingStar() {
-    const angle = randomBetween(20, 50) * (Math.PI / 180);
-    const speed = randomBetween(6, 14);
-    shootingStars.push({
-        x: randomBetween(0, width * 0.7),
-        y: randomBetween(0, height * 0.4),
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        length: randomBetween(80, 180),
-        opacity: 1,
-        fade: randomBetween(0.012, 0.025),
-    });
-}
-
-function drawShootingStars() {
-    shootingStars = shootingStars.filter(s => s.opacity > 0);
-
-    shootingStars.forEach(s => {
-        const tailX = s.x - s.vx * (s.length / 10);
-        const tailY = s.y - s.vy * (s.length / 10);
-
-        const grad = ctx.createLinearGradient(tailX, tailY, s.x, s.y);
-        grad.addColorStop(0, `rgba(200, 220, 255, 0)`);
-        grad.addColorStop(1, `rgba(220, 235, 255, ${s.opacity})`);
-
-        ctx.beginPath();
-        ctx.moveTo(tailX, tailY);
-        ctx.lineTo(s.x, s.y);
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-
-        s.x += s.vx;
-        s.y += s.vy;
-        s.opacity -= s.fade;
-    });
-}
-
 function loop() {
     ctx.clearRect(0, 0, width, height);
     drawStars();
-    drawShootingStars();
     requestAnimationFrame(loop);
 }
 
@@ -127,8 +84,6 @@ window.addEventListener('resize', () => {
     resize();
     createStars();
 });
-
-setInterval(spawnShootingStar, SHOOTING_STAR_INTERVAL);
 
 resize();
 createStars();
